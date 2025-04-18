@@ -176,16 +176,123 @@ var majorityElement = function (nums) {
 // console.log(majorityElement(nums));
 
 // 231. Power of Two -------------------------------------------------------
-const n = 16;
+// const n = 16;
 
-var isPowerOfTwo = function(n) {
-  if(n <= 0) return false;
+var isPowerOfTwo = function (n) {
+  if (n <= 0) return false;
 
-  while(n%2 === 0){
-    n=n/2
+  while (n % 2 === 0) {
+    n = n / 2;
   }
 
   return n === 1;
 };
 
-console.log(isPowerOfTwo(n));
+// console.log(isPowerOfTwo(n));
+
+// 28. Find the Index of the First Occurrence in a String ------------------
+const haystack = "leetcode",
+  needle = "code";
+
+var strStr = function (haystack, needle) {
+  return haystack.indexOf(needle);
+};
+
+// console.log(strStr(haystack, needle));
+
+// 69. Sqrt(x) ------------------------------------------------------------
+let x = 4;
+
+// var mySqrt = function (x) {
+//   return Number(Math.sqrt(x).toString().split(".")[0]);
+// };
+
+var mySqrt = function (x) {
+  if (x < 2) return x;
+
+  let left = 1,
+    right = x,
+    ans = 0;
+
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+
+    if (mid * mid === x) {
+      return mid;
+    } else if (mid * mid < x) {
+      ans = mid;
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return ans;
+};
+
+// console.log(mySqrt(x));
+
+// 70. Climbing Stairs --https://leetcode.com/problems/climbing-stairs/
+const n = 7;
+
+var climbStairs = function (n) {
+  if (n <= 2) return n;
+
+  let first = 1,
+    second = 2;
+
+  for (let i = 3; i <= n; i++) {
+    let third = first + second;
+    first = second;
+    second = third;
+  }
+
+  return second;
+};
+
+console.log(climbStairs(n));
+
+/*
+4 ==> 4 + 1
+1 + 1 + 1 + 1
+1 + 1 + 2
+1 + 2 + 1
+2 + 1 + 1
+2 + 2
+
+5 ==> 5 + 2 
+1 + 1 + 1 + 1 + 1
+1 + 1 + 1 + 2
+1 + 1 + 2 + 1
+1 + 2 + 1 + 1
+2 + 1 + 1 + 1
+2 + 2 + 1
+1 + 2 + 2
+
+6 ==> 6 + 4
+1 + 1 + 1 + 1 + 1 + 1
+1 + 1 + 1 + 1 + 2
+1 + 1 + 1 + 2 + 1
+1 + 1 + 2 + 1 + 1
+1 + 2 + 1 + 1 + 1
+2 + 1 + 1 + 1 + 1
+1 + 1 + 2 + 2
+1 + 2 + 2 + 1
+2 + 2 + 1 + 1
+2 + 2 + 2
+
+7 ==>  7 + 6
+1 + 1 + 1 + 1 + 1 + 1 + 1
+1 + 1 + 1 + 1 + 1 + 2
+1 + 1 + 1 + 1 + 2 + 1
+1 + 1 + 1 + 2 + 1 + 1
+1 + 1 + 2 + 1 + 1 + 1
+1 + 2 + 1 + 1 + 1 + 1
+2 + 1 + 1 + 1 + 1 + 1
+1 + 1 + 1 + 2 + 2
+1 + 1 + 2 + 2 + 1
+1 + 2 + 2 + 1 + 1
+2 + 2 + 1 + 1 + 1
+1 + 2 + 2 + 2
+2 + 2 + 2 + 1
+*/
